@@ -1,0 +1,106 @@
+<%- include("../partials/headera") %>
+<div class="col-lg-6 col-md-12" id="form">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-12" style="margin-top: 4%">
+            <div id="form1">
+                <a href="/" id="back">
+                    <i class="fas fa-arrow-left"></i>
+                    Wróć do strony głównej
+                </a>
+                <h1 class="login">Edytuj informacje o firmie <%= user.companyName %></h1>
+                <% if(error.length > 0){ %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %>
+                    </div>
+                <% } %>
+                <% if(success.length > 0){ %>
+                    <div class="alert alert-success" role="alert">
+                        <%= success %>
+                    </div>
+                <% } %>
+                
+                <form action="/users/<%= user._id %>?_method=PUT" method="post">
+                   
+                    
+                    <div class="form-floating mb-3">
+                       
+                        <input type="text" class="form-control" autocomplete="off" placeholder="demcio09" name="user[username]" id="username" value="<%= user.username %>" aria-label="Hasło" aria-describedby="basic-addon1">
+                        <label for="username" class="username">
+                            Nazwa użytkownika
+                            
+                        </label>
+                        
+                    </div>
+                  
+                    
+                    <div class="form-floating mb-3">
+                       
+                        <input type="email" class="form-control" autocomplete="off" placeholder="demcio09" name="user[email]" id="email" aria-label="Hasło" value="<%= user.email %>" aria-describedby="basic-addon1">
+                        <label for="email" class="username">
+                            Email
+                            
+                        </label>
+                        
+                    </div>
+
+                    <div class="form-floating mb-3">
+                       
+                        <input type="text" class="form-control" autocomplete="off" placeholder="demcio09" name="user[companyName]" id="companyName" value="<%= user.companyName %>" aria-label="Hasło" aria-describedby="basic-addon1">
+                        <label for="companyName" class="username">
+                            Nazwa firmy
+                            
+                        </label>
+                        
+                    </div>
+
+                    <div class="form-floating mb-3">
+                       
+                        <input type="text" class="form-control" autocomplete="off" placeholder="demcio09" name="user[location]" id="location" value="<%= user.location %>" aria-label="Hasło" aria-describedby="basic-addon1">
+                        <label for="location" class="username">
+                            Lokalizacja
+                            
+                        </label>
+                        
+                    </div>
+
+                    <div class="form-floating mb-3">
+                       
+                        <input type="text" class="form-control" autocomplete="off" placeholder="demcio09" name="user[phone]" id="phone" value="<%= user.phone %>" aria-label="Hasło" aria-describedby="basic-addon1">
+                        <label for="phone" class="username">
+                            Numer telefonu
+                            
+                        </label>
+                        
+                    </div>
+
+                    <div class="form-floating mb-3">
+                       
+                        <input type="text" class="form-control" autocomplete="off" placeholder="demcio09" name="user[facebookLink]" id="facebookLink" value="<%= user.facebookLink %>" aria-label="Hasło" aria-describedby="basic-addon1">
+                        <label for="facebookLink" class="username">
+                            Link do Facebooka
+                            
+                        </label>
+                        
+                    </div>
+                    <div class="form-floating mb-3">
+                       
+                        <textarea class="form-control" autocomplete="off" placeholder="demcio09" name="user[description]" id="description"><%= user.description %></textarea>
+                        <label for="description" class="username">
+                            Opis o nas
+                            
+                        </label>
+                        
+                    </div>
+                    
+                    <input type="submit" value="Edytuj o nas" class="btn button btn-danger btn-golden">
+                   
+                </form>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+
+</body>
+</html>

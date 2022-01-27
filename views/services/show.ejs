@@ -1,0 +1,99 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card">
+                <img src="<%= service.profile %>" alt="<%= service.title %>" class="card-img-top" crossorigin>
+                <div class="card-body">
+                   
+                    <div class="card-title">
+                        <h2 class="section_desc"><%= service.title %></h2>
+                    </div>
+                    <div class="informations">
+                        <p>
+                            <i class="fas fa-dollar-sign icon"></i>
+                            <strong>Cena:</strong> 
+                            <% if(service.price){ %>
+                                <%= service.price %>
+                            <% } else { %>
+                                Zależna od modelu auta
+                            <% } %>
+                            
+                        </p>
+                        <p>
+                            <i class="fas fa-clock icon"></i>
+                            <strong>Czas realizacji:</strong> 
+                            <% if(service.time){ %>
+                                <%= service.time %>
+                            <% } else { %>
+                                Zależny od wielu czynników
+                            <% } %>
+                           
+                        </p>
+                       
+                        
+                        
+                        
+                    </div>
+                    <p class="about">
+                        <%= service.description %>
+                    </p>
+                    <% if(currentUser){ %>
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Modyfikacja
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="/services/<%= service._id %>/edit">Edytuj</a>
+                                <a class="dropdown-item" href="/services/<%= service._id %>/delete">Usuń</a>
+                                <a class="dropdown-item" href="/services/<%= service._id %>/new/picture">Dodaj zdjęcie do galerii</a>
+                                <% if(service.chosen){ %>
+                                    <a class="dropdown-item" href="/services/<%= service._id %>/makeChosen">Usuń z wybranych usług</a>
+                                <% } else { %>
+                                    <a class="dropdown-item" href="/services/<%= service._id %>/makeChosen">Dodaj do wybranych usług</a>
+                                <% } %> 
+                                <a class="dropdown-item" href="/services/<%= service._id %>/edit/picture">Edytuj zdjęcie główne</a>
+                                <a class="dropdown-item" href="/services/<%= service._id %>/whyHere/add">Dodaj powód dlaczego warto skorzystać</a>
+                            </div>
+                        </div>
+                    <% } %>
+                    <% if(service.whyHere.length){ %>
+                        <h3 class="service-section-title">
+                            Dlaczego warto skorzystać z tej usługi u nas?
+                        </h3>
+                        <ul>
+                            <% for(let reason of service.whyHere){ %>
+                                <li><%= reason.text %></li>
+                                <% if(currentUser){ %>
+                                    <a href="/services/<%= service._id %>/whyHere/<%= reason._id %>/edit">Edytuj</a>
+                                    <a href="/services/<%= service._id %>/whyHere/<%= reason._id %>/delete">Usuń</a>
+                                <% } %>
+                            <% } %>
+                        </ul>
+                    <% } %>
+                    
+                    <% if(service.pictures.length){ %>
+                        <h3 class="service-section-title">Galeria</h3>
+                        <div class="row">
+                            <% for(let picture of service.pictures){ %>
+                             
+                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                    <img src='<%= picture.source %>' alt="<%= service.title %> zdjęcie" class="img-thumbnail" crossorigin>
+                                </div>
+                            <% } %>
+                            
+                        </div>
+                    <% } %>
+                    
+                   
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById("offer").classList.add("active")
+</script>
+<%- include("../partials/footer") %>
