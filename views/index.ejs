@@ -3,7 +3,7 @@
 <div class="container-full">
     <div class="row">
         <div class="col-lg-12">
-            <div class="jumbotron" style="background: url('/beach1.jpg');">
+            <div class="jumbotron" style="background: url('/mechanic.jpg'); background-size: cover;">
                 <h2 class="section_jumbo">Strona główna</h2>
             </div>
             
@@ -44,7 +44,7 @@
                         <div class="col-lg-6 col-sm-12 img__wrap service">
                             <img src="<%= service.profile %>" alt="<%= service.title %>" style="height: 100%;" class="img-thumbnail" crossorigin>
                             <div class="img__description">
-                                <a href="/realisations/1">
+                                <a href="/services/<%= service.subpageLink %>">
                                     <%= service.title %>
                                 </a>
                             </div>

@@ -19,7 +19,7 @@
                     </div>
                 <% } %>
                 
-                <form action="/services/<%= service._id %>/edit/picture" method="post" enctype="multipart/form-data">
+                <form action="/services/<%= service._id %>/edit/picture" method="post" enctype="multipart/form-data" id="form">
                    
                     
                     
@@ -28,7 +28,7 @@
                         <input class="form-control" type="file" id="formFile" name="picture" required>
                       </div>
 
-                    <input type="submit" value="Edytuj zdjęcie główne" class="btn button btn-danger btn-golden">
+                    <input type="submit" value="Edytuj zdjęcie główne" class="btn button btn-danger btn-golden" id="send">
                    
                 </form>
             </div>
@@ -38,13 +38,10 @@
     </div>
 </div>
 <script>
-
-    $(".form-control").on('click', function(){
-                    $(".form-control").css({
-                        
-                        "box-shadow": "none"
-                    });
-                });
-    </script>
+    document.getElementById("form").addEventListener("submit", () => {
+        document.getElementById("send").setAttribute("disabled", "disabled");
+        document.getElementById("send").value = "Edytowanie...";
+    })
+</script>
 </body>
 </html>

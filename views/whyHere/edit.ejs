@@ -44,13 +44,10 @@
     </div>
 </div>
 <script>
-
-    $(".form-control").on('click', function(){
-                    $(".form-control").css({
-                        
-                        "box-shadow": "none"
-                    });
-                });
-    </script>
+    document.getElementById("form").addEventListener("submit", () => {
+        document.getElementById("send").setAttribute("disabled", "disabled");
+        document.getElementById("send").value = "Edytowanie...";
+    })
+</script>
 </body>
 </html>

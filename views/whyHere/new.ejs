@@ -19,7 +19,7 @@
                     </div>
                 <% } %>
                 
-                <form action="/services/<%= service._id %>/whyHere" method="post">
+                <form action="/services/<%= service._id %>/whyHere" method="post" id="form">
                    
                     
                     <div class="form-floating mb-3">
@@ -34,7 +34,7 @@
                   
 
                   
-                    <input type="submit" value="Dodaj powód" class="btn button btn-danger btn-golden">
+                    <input type="submit" value="Dodaj powód" class="btn button btn-danger btn-golden" id="send">
                    
                 </form>
             </div>
@@ -44,13 +44,10 @@
     </div>
 </div>
 <script>
-
-    $(".form-control").on('click', function(){
-                    $(".form-control").css({
-                        
-                        "box-shadow": "none"
-                    });
-                });
-    </script>
+    document.getElementById("form").addEventListener("submit", () => {
+        document.getElementById("send").setAttribute("disabled", "disabled");
+        document.getElementById("send").value = "Dodawanie...";
+    })
+</script>
 </body>
 </html>

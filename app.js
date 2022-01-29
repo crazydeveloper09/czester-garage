@@ -42,6 +42,8 @@ app.use(require("express-session")({
     }
 }));
 app.use(function(req, res, next) {
+    res.locals.return_route = req.query.return_route;
+	res.locals.route = req.path;
     res.locals.error = req.flash("error");
     res.locals.success = req.flash("success");
     res.locals.currentUser = req.user;

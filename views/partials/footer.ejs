@@ -25,7 +25,11 @@
 
                     <p class="language text-right">
 
-                        <a href="/login" style="color:white">panel administracyjny</a>
+                        <% if(return_route){ %>
+                            <a href="/login?return_route=<%= return_route %>" style="color: white;">panel administracyjny</a>
+                        <% } else { %> 
+                            <a href="/login?return_route=<%= route %>" style="color: white; ">panel administracyjny</a>
+                        <% } %>
 
                     </p>
                 </div>
@@ -65,6 +69,8 @@
                     const whatsappIcon = document.createElement("i");
                     const phoneLink = document.createElement("a");
                     const phoneIcon = document.createElement("i");
+                    const mailLink = document.createElement("a");
+                    const mailIcon = document.createElement("i");
 
                     facebookLink.href = response.data.facebookLink;
                     facebookLink.target = "_blank";
@@ -81,11 +87,16 @@
                     facebookLink.appendChild(whatsappLink)
 
                     phoneLink.href = `tel:${response.data.phone}`;
-                    phoneLink.target = "_blank";
                     phoneIcon.className = "fas fa-phone-alt fa-2x icon-contact";
                     phoneIcon.style.color = "white";
                     phoneLink.append(phoneIcon);
                     whatsappLink.appendChild(phoneLink)
+
+                    mailLink.href = `mailto:${response.data.email}`;
+                    mailIcon.className = "fas fa-envelope fa-2x icon-contact";
+                    mailIcon.style.color = "white";
+                    mailLink.append(mailIcon);
+                    phoneLink.appendChild(mailLink)
                 })
                 .catch((err) => {
 

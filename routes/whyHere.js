@@ -46,7 +46,7 @@ router.post("/", isLoggedIn, (req, res) => {
                 } else {
                     service.whyHere.push(createdwhyHere);
                     service.save();
-                    res.redirect(`/services/${service.subpageLink}`);
+                    res.redirect(`/services/${service._id}/whyHere/redirect`);
                 }
            })
         }
@@ -84,7 +84,7 @@ router.put("/:whyHere_id", isLoggedIn, (req, res) => {
                 if(err){
                     console.log(err);
                 } else {
-                    res.redirect(`/services`);
+                    res.redirect(`/services/${service.subpageLink}`);
                 }
             })
         }
@@ -101,7 +101,7 @@ router.get("/:whyHere_id/delete", isLoggedIn, (req, res) => {
                 if(err){
                     console.log(err);
                 } else {
-                    res.redirect(`/services`);
+                    res.redirect(`/services/${service.subpageLink}`);
                 }
             })
         }

@@ -1,0 +1,52 @@
+<%- include("./partials/headera") %>
+<div class="col-lg-6 col-md-12" id="form">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-12" style="margin-top: 22%">
+            <div id="form1">
+                <a href="/login">
+                    <i class="fas fa-arrow-left"></i>
+                    Wróć do strony logowania
+                </a>
+                <h1 class="login">Nie pamiętam hasła</h1>
+                <% if(error.length > 0){ %>
+                <div class="alert alert-danger" role="alert">
+                    <%= error %>
+                </div>
+                <% } %>
+                <% if(success.length > 0){ %>
+                <div class="alert alert-success" role="alert">
+                    <%= success %>
+                </div>
+                <% } %>
+                <form action="/forgot" method="post" id="form">
+                    <div class="form-floating mb-3">
+                       
+                        <input type="text" class="form-control" autocomplete="on" name="email" id="username" placeholder="Adres email" aria-label="Adres email" aria-describedby="basic-addon1">
+                        <label for="username" class="username">
+                            Podaj adres email
+                            
+                        </label>
+                        
+                    </div>
+                    
+                    
+
+
+                    <input type="submit" value="Poproś o zmianę hasła" class="btn button btn-danger btn-golden" id="send">
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<script>
+    document.getElementById("form").addEventListener("submit", () => {
+        document.getElementById("send").setAttribute("disabled", "disabled");
+        document.getElementById("send").value = "Wysyłanie tokenu...";
+    })
+</script>
+</body>
+
+</html>

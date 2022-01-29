@@ -3,15 +3,25 @@
 
 	
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MPTG6QQDQK"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-	<meta name="theme-color" content="#fff">
+  gtag('config', 'G-MPTG6QQDQK');
+</script>
+	  <meta name="theme-color" content="#fff">
     <meta charset="UTF-8">
+    <meta name="robots" content="index, follow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>
       <%= header %>
     </title>
-   
+    <meta name="keywords" content="warsztat, Czester garage, mechanik, Naprawa,rozrzad, zawieszenie, klimatyzacja, czesci, oleje, filtry, autonaprawa,serwis samochodowy,samochód, rozrzad, dobry mechanik, dobry warsztat, ProfiAuto, czester,Marcin Nester garage, pomoc">
+    <meta name="description" content="AutoMechanika Czester-Garage ul. Głogowska 44, 67-222  Jerzmanowa  Serwis ProfiAuto tel. 609551974 warsztat.czester@gmail.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;400;700&display=swap" rel="stylesheet">
@@ -60,7 +70,16 @@
                 </li>
                
 			 
-                
+                <% if(currentUser){ %>
+                  <li class="nav-item">
+                   
+                    <a class="nav-link" href="/logout" id="contact">
+                      Wyloguj się
+                    </a>
+                    
+                    
+                  </li>
+                <% } %>
                
               
                 

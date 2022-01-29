@@ -55,6 +55,9 @@ body {
 .margin {
     margin-top: 140px;
 }
+.card {
+    margin-top: 130px;
+}
 .section_jumbo {
     color: white;
     font-weight: 700;

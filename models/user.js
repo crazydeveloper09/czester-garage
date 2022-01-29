@@ -15,13 +15,16 @@ const userSchema = new mongoose.Schema({
     city: String,
     postCode: String,
     street: String,
+    profiAutoPhone: String,
     description: String,
     pictures: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: "Picture"
         }
-    ]
+    ],
+    resetPasswordToken: String,
+	resetPasswordExpires: Date
 })
 
 userSchema.plugin(passportLocalMongoose);

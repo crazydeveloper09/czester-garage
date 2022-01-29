@@ -19,7 +19,7 @@
                     </div>
                 <% } %>
                 
-                <form action="/login" method="post">
+                <form action="/login?return_route=<%= return_route %>" method="post" id="form">
                    
                     
                     <div class="form-floating mb-3">
@@ -40,9 +40,10 @@
                         
                         </label>
                     </div>
-                    <input type="submit" value="Zaloguj się" class="btn button btn-danger btn-golden">
+                    <input type="submit" value="Zaloguj się" class="btn button btn-danger btn-golden" id="send">
                    
                 </form>
+                <a href="/forgot" class="btn btn-secondary button">Zapomniałem hasło</a>
             </div>
             
         </div>
@@ -50,13 +51,10 @@
     </div>
 </div>
 <script>
-
-    $(".form-control").on('click', function(){
-                    $(".form-control").css({
-                        
-                        "box-shadow": "none"
-                    });
-                });
-    </script>
+    document.getElementById("form").addEventListener("submit", () => {
+        document.getElementById("send").setAttribute("disabled", "disabled");
+        document.getElementById("send").value = "Logowanie...";
+    })
+</script>
 </body>
 </html>

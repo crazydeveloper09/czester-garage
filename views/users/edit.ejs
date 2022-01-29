@@ -19,7 +19,7 @@
                     </div>
                 <% } %>
                 
-                <form action="/users/<%= user._id %>?_method=PUT" method="post">
+                <form action="/users/<%= user._id %>?_method=PUT" method="post" id="form">
                    
                     
                     <div class="form-floating mb-3">
@@ -72,7 +72,15 @@
                         </label>
                         
                     </div>
-
+                    <div class="form-floating mb-3">
+                       
+                        <input type="text" class="form-control" autocomplete="off" placeholder="demcio09" name="user[profiAutoPhone]" id="phone" value="<%= user.profiAutoPhone %>" aria-label="Hasło" aria-describedby="basic-addon1">
+                        <label for="phone" class="username">
+                            Numer telefonu ProfiAuto
+                            
+                        </label>
+                        
+                    </div>
                     <div class="form-floating mb-3">
                        
                         <input type="text" class="form-control" autocomplete="off" placeholder="demcio09" name="user[facebookLink]" id="facebookLink" value="<%= user.facebookLink %>" aria-label="Hasło" aria-describedby="basic-addon1">
@@ -92,7 +100,7 @@
                         
                     </div>
                     
-                    <input type="submit" value="Edytuj o nas" class="btn button btn-danger btn-golden">
+                    <input type="submit" value="Edytuj o nas" class="btn button btn-danger btn-golden" id="send">
                    
                 </form>
             </div>
@@ -101,6 +109,11 @@
         
     </div>
 </div>
-
+<script>
+    document.getElementById("form").addEventListener("submit", () => {
+        document.getElementById("send").setAttribute("disabled", "disabled");
+        document.getElementById("send").value = "Edytowanie...";
+    })
+</script>
 </body>
 </html>

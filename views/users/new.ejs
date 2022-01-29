@@ -19,7 +19,7 @@
                     </div>
                 <% } %>
                 
-                <form action="/register" method="post">
+                <form action="/register" method="post" id="form">
                    
                     
                     <div class="form-floating mb-3">
@@ -49,7 +49,7 @@
                         
                         </label>
                     </div>
-                    <input type="submit" value="Zarejestruj się" class="btn button btn-danger btn-golden">
+                    <input type="submit" value="Zarejestruj się" class="btn button btn-danger btn-golden" id="send">
                    
                 </form>
             </div>
@@ -59,13 +59,10 @@
     </div>
 </div>
 <script>
-
-    $(".form-control").on('click', function(){
-                    $(".form-control").css({
-                        
-                        "box-shadow": "none"
-                    });
-                });
-    </script>
+    document.getElementById("form").addEventListener("submit", () => {
+        document.getElementById("send").setAttribute("disabled", "disabled");
+        document.getElementById("send").value = "Dodawanie...";
+    })
+</script>
 </body>
 </html>
