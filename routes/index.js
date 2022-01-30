@@ -21,7 +21,9 @@ router.get("/", (req, res) => {
     })
    
 })
-
+router.get("/privacy-policy", (req, res) => {
+    res.render("policy", {header: "Polityka prywatności i klauzula RODO"})
+})
     
 router.get("/contact", function(req, res){
     User.findOne({username: admin_username}, (err, admin) => {
