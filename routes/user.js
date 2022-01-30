@@ -3,6 +3,7 @@ const express       = require("express"),
     flash           = require("connect-flash"),
     methodOverride  = require("method-override"),
     Picture         = require("../models/picture"),
+    sanitizeHTML    = require("sanitize-html"),
     app             = express(), 
     NodeGeocoder    = require("node-geocoder"),
     router          = express.Router(),
@@ -76,6 +77,7 @@ router.put("/:id", isLoggedIn, (req, res) => {
                 updatedUser.postCode = data[0].zipcode;
                 updatedUser.city =  data[0].city;
                 updatedUser.street = street;
+                updatedUser.description = sanitizeHTML(req.body.user.description);
                 updatedUser.save();
                 res.redirect("/")
             }

@@ -3,6 +3,7 @@ const express = require("express"),
 	Picture = require("../models/picture"),
 	whyHere = require("../models/whyHere"),
     flash = require("connect-flash"),
+	sanitizeHTML    = require("sanitize-html"),
     methodOverride = require("method-override"),
     app = express(),
     router = express.Router(),
@@ -142,7 +143,7 @@ router.post("/", upload.single('profile'), function(req, res){
 				profile: result.secure_url,
                 time: req.body.time,
                 price: req.body.price,
-				description: req.body.description,
+				description: sanitizeHTML(req.body.description),
 				pictures: [],
 				whyHere: [],
 				subpageLink: req.body.title.toLowerCase().split(' ').join('-')
@@ -159,7 +160,7 @@ router.post("/", upload.single('profile'), function(req, res){
 	
 			let newService = new Service({
 				title:req.body.title,
-				description: req.body.description,
+				description: sanitizeHTML(req.body.description),
                 time: req.body.time,
                 price: req.body.price,
 				pictures: [],
@@ -213,6 +214,7 @@ router.put("/:id", isLoggedIn, function(req, res){
 			console.log(err);
 		} else {
 			updatedservice.subpageLink = updatedservice.title.toLowerCase().split(' ').join('-');
+			updatedservice.description = sanitizeHTML(req.body.service.description);
 			updatedservice.save();
 			res.redirect("/services/" + updatedservice.subpageLink);
 		}

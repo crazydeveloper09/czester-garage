@@ -2,6 +2,7 @@ const express = require("express"),
     WhyHere = require("../models/whyHere"),
     Service = require("../models/service"),
     methodOverride = require("method-override"),
+    sanitizeHTML    = require("sanitize-html"),
     app = express(),
     flash = require("connect-flash"),
     router = express.Router({mergeParams: true});
@@ -40,7 +41,7 @@ router.post("/", isLoggedIn, (req, res) => {
         if(err){
             console.log(err)
         } else {
-            WhyHere.create({text:req.body.text}, (err, createdwhyHere) => {
+            WhyHere.create({text: sanitizeHTML(req.body.text)}, (err, createdwhyHere) => {
                 if(err) {
                    console.log(err);
                 } else {
@@ -84,6 +85,8 @@ router.put("/:whyHere_id", isLoggedIn, (req, res) => {
                 if(err){
                     console.log(err);
                 } else {
+                    updatedwhyHere.text = sanitizeHTML(req.body.whyHere.text);
+                    updatedwhyHere.save();
                     res.redirect(`/services/${service.subpageLink}`);
                 }
             })
