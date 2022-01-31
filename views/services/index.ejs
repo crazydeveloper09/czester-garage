@@ -32,7 +32,7 @@
                 <% } else { %>
                     <% for(let service of services){ %>
                         <div class="col-lg-6 col-sm-12 img__wrap service">
-                            <img src="<%= service.profile %>" alt="<%= service.title %>" style="height: 100%;" class="img-thumbnail" crossorigin />
+                            <img src="<%= service.profile %>" alt="<%= service.title %>" class="img-thumbnail" crossorigin />
                             <div class="img__description">
                                 <a href="/services/<%= service.subpageLink %>">
                                     <%= service.title %>
