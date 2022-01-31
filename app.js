@@ -26,7 +26,6 @@ app.use(mongoSanitize());
 app.use(helmet({
     contentSecurityPolicy: false,
 }))
-app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 dotenv.config();
 
 mongoose.connect(process.env.DATABASE_URL, {useNewUrlParser: true})
