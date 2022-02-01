@@ -1,0 +1,78 @@
+<%- include("../partials/headera") %>
+<div class="col-lg-6 col-md-12" id="form">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-12" style="margin-top: 13%">
+            <div id="form1">
+                <a href="/services" id="back">
+                    <i class="fas fa-arrow-left"></i>
+                    Wróć do strony z usługami
+                </a>
+                <h1 class="login">Dodaj usługę</h1>
+                <% if(error.length > 0){ %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %>
+                    </div>
+                <% } %>
+                <% if(success.length > 0){ %>
+                    <div class="alert alert-success" role="alert">
+                        <%= success %>
+                    </div>
+                <% } %>
+                
+                <form action="/services" method="post" enctype="multipart/form-data" id="form">
+                   
+                    
+                    <div class="form-floating mb-3">
+                       
+                        <input required type="text" class="form-control" autocomplete="off" placeholder="demcio09" name="title" id="title" aria-label="Hasło" aria-describedby="basic-addon1">
+                        <label for="title" class="username">
+                            Nazwa usługi
+                            
+                        </label>
+                        
+                    </div>
+                  
+
+                    <div class="form-floating mb-3">
+                       <textarea required class="form-control" name="description" id="description"></textarea>
+                        <label for="description" class="username">
+                            Opis usługi
+                        
+                        </label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" autocomplete="off" placeholder="demcio09" name="time" id="time">
+                        <label for="time" class="username">
+                            Czas wykonania
+                         
+                        </label>
+                     </div>
+                     <div class="form-floating mb-3">
+                        <input type="number" class="form-control" autocomplete="off" placeholder="demcio09" name="price" id="price]">
+                        <label for="description" class="username">
+                            Cena
+                         
+                        </label>
+                     </div>
+                     <div class="mb-3">
+                        <label for="formFile" class="username">Zdjęcie główne usługi</label>
+                        <input class="form-control" type="file" id="formFile" name="profile" required>
+                      </div>
+
+                    <input type="submit" value="Dodaj usługę" class="btn button btn-danger btn-golden" id="send">
+                   
+                </form>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+<script>
+    document.getElementById("form").addEventListener("submit", () => {
+        document.getElementById("send").setAttribute("disabled", "disabled");
+        document.getElementById("send").value = "Dodawanie...";
+    })
+</script>
+</body>
+</html>

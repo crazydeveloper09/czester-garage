@@ -1,0 +1,53 @@
+<%- include("../partials/headera") %>
+<div class="col-lg-6 col-md-12" id="form">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-12" style="margin-top: 18%">
+            <div id="form1">
+                <a href="/services/<%= service.subpageLink %>" id="back">
+                    <i class="fas fa-arrow-left"></i>
+                    Wróć do strony usługi <%= service.title %>
+                </a>
+                <h1 class="login">Dodaj powód dlaczego tutaj dla usługi <%= service.title %></h1>
+                <% if(error.length > 0){ %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %>
+                    </div>
+                <% } %>
+                <% if(success.length > 0){ %>
+                    <div class="alert alert-success" role="alert">
+                        <%= success %>
+                    </div>
+                <% } %>
+                
+                <form action="/services/<%= service._id %>/whyHere" method="post" id="form">
+                   
+                    
+                    <div class="form-floating mb-3">
+                       
+                        <textarea required class="form-control" autocomplete="off" placeholder="demcio09" name="text" id="text"></textarea>
+                        <label for="username" class="username">
+                            Podaj powód
+                            
+                        </label>
+                        
+                    </div>
+                  
+
+                  
+                    <input type="submit" value="Dodaj powód" class="btn button btn-danger btn-golden" id="send">
+                   
+                </form>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+<script>
+    document.getElementById("form").addEventListener("submit", () => {
+        document.getElementById("send").setAttribute("disabled", "disabled");
+        document.getElementById("send").value = "Dodawanie...";
+    })
+</script>
+</body>
+</html>

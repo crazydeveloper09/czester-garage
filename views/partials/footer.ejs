@@ -1,0 +1,104 @@
+<div id="contactDiv">
+
+    <div class="container">
+        <div class="row">
+            <br>
+            <div class="col-lg-6 col-md-12">
+                <h1 class="desc">Skontaktuj się z nami</h1>
+                <div id="contact" class="text-left" style="font-size: 18px;">
+                    <p class="footer_description" id="footer-info">
+                        
+                        
+
+                       
+                    </p>
+                </div>
+            </div>
+                <div class="col-lg-6 col-md-12">
+                    <p class="language text-right">
+
+                        <br>
+                       Czester-garage <script>
+                            document.write(new Date().getFullYear())
+                        </script> &copy; Wszelkie prawa zastrzeżone
+                    </p>
+                    <p class="language text-right">
+                        Realizacja: <a href="https://websiteswithpassion.pl" style="color: white;">Websites With Passion</a>
+                    </p>
+                    <p class="language text-right">
+                        <% if(return_route){ %>
+                            <a href="/login?return_route=<%= return_route %>" style="color: white;">panel administracyjny</a>
+                        <% } else { %> 
+                            <a href="/login?return_route=<%= route %>" style="color: white; ">panel administracyjny</a>
+                        <% } %>
+
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" id="cookieinfo"
+        src="https://cookieinfoscript.com/js/cookieinfo.min.js" data-message="Używam plików cookies (tzw.ciasteczek), by poprawić jakość używania strony. Przez kliknięcie x zgadzasz się na zbieranie danych. Masz możliwość wyłączenia ich w przeglądarce." data-bg="white" data-moreinfo="/privacy-policy" data-linkmsg="Polityka prywatności i RODO" data-fg="black" data-text-align="left" data-font-size="11px" async>
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous" async></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous" async></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous" async></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script>
+            axios
+                .get("/api/user")
+                .then((response) => {
+                    const p = document.createElement("p");
+                    console.log(response.data)
+                    p.innerHTML = `${response.data.companyName}
+                        <br>
+                        ul. ${response.data.street}
+                        <br>
+                        ${response.data.postCode} ${response.data.city}
+
+                        <br>
+                        <br>`
+                    document.getElementById("footer-info").append(p)
+                    const facebookLink = document.createElement("a");
+                    const facebookIcon = document.createElement("i");
+                    const whatsappLink = document.createElement("a");
+                    const whatsappIcon = document.createElement("i");
+                    const phoneLink = document.createElement("a");
+                    const phoneIcon = document.createElement("i");
+                    const mailLink = document.createElement("a");
+                    const mailIcon = document.createElement("i");
+
+                    facebookLink.href = response.data.facebookLink;
+                    facebookLink.target = "_blank";
+                    facebookIcon.className = "fab fa-facebook fa-2x icon-contact";
+                    facebookIcon.style.color = "white";
+                    facebookLink.append(facebookIcon);
+                    p.appendChild(facebookLink)
+
+                    whatsappLink.href = `https://wa.me/${response.data.phone.charAt(0) === "+" ? response.data.phone.substring(1) : response.data.phone}`;
+                    whatsappLink.target = "_blank";
+                    whatsappIcon.className = "fab fa-whatsapp fa-2x icon-contact";
+                    whatsappIcon.style.color = "white";
+                    whatsappLink.append(whatsappIcon);
+                    facebookLink.appendChild(whatsappLink)
+
+                    phoneLink.href = `tel:${response.data.phone}`;
+                    phoneIcon.className = "fas fa-phone-alt fa-2x icon-contact";
+                    phoneIcon.style.color = "white";
+                    phoneLink.append(phoneIcon);
+                    whatsappLink.appendChild(phoneLink)
+
+                    mailLink.href = `mailto:${response.data.email}`;
+                    mailIcon.className = "fas fa-envelope fa-2x icon-contact";
+                    mailIcon.style.color = "white";
+                    mailLink.append(mailIcon);
+                    phoneLink.appendChild(mailLink)
+                })
+                .catch((err) => {
+
+                })
+        </script>
+    </body>
+
+    </html>

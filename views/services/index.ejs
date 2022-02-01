@@ -1,0 +1,52 @@
+<%- include("../partials/header") %>
+
+<div class="container-full">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="jumbotron" style="background: url('/tools.jpg');">
+                <h2 class="section_jumbo">Usługi</h2>
+                <% if(currentUser){ %>
+                    <div class="text-center">
+                        <a href="/services/new" class="btn btn-danger btn-mine">Dodaj usługę</a>
+                    </div>
+                    
+                <% } %>
+            </div>
+            
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            
+            
+            <div class="row">
+                <% if(services.length === 0){ %>
+                    <div class="col-lg-6 col-lg-12">
+                        <div class="alert alert-primary">
+                            Nie dodaliśmy jeszcze żadnych usług
+                        </div>
+                    </div>
+                    
+                <% } else { %>
+                    <% for(let service of services){ %>
+                        <div class="col-lg-6 col-sm-12 img__wrap service">
+                            <img src="<%= service.profile %>" alt="<%= service.title %>" class="img-thumbnail" crossorigin />
+                            <div class="img__description">
+                                <a href="/services/<%= service.subpageLink %>">
+                                    <%= service.title %>
+                                </a>
+                            </div>
+                        </div>
+                    <% } %>
+                <% } %>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    document.getElementById("offer").classList.add("active")
+</script>
+<%- include("../partials/footer") %>
