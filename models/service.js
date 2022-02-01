@@ -18,6 +18,12 @@ const serviceSchema = new mongoose.Schema({
             ref: "WhyHere"
         }
     ],
+    subcategories: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Subcategory"
+        }
+    ],
     subpageLink: String,
     chosen: {
         type: Boolean,

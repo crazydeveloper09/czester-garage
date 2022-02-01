@@ -196,14 +196,12 @@ router.get("/:id/edit", isLoggedIn, function(req, res){
 });
 
 router.get("/:id", function(req, res){
-	Service.findOne({subpageLink:req.params.id}).populate(["whyHere","pictures"]).exec(function(err, service){
+	Service.findOne({subpageLink:req.params.id}).populate(["whyHere","pictures", "subcategories"]).exec(function(err, service){
 		if(err) {
 			console.log(err);
 		} else {
 			let header = `${service.title} | Usługi | Czester Garage`;
 			res.render("./services/show", {service: service, header: header, currentUser: req.user});
-            
-			
 		}
 	});
 });

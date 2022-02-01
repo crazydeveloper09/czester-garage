@@ -1,0 +1,63 @@
+<%- include("../partials/headera") %>
+<div class="col-lg-6 col-md-12" id="form">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-12" style="margin-top: 18%">
+            <div id="form1">
+                <a href="/services/<%= service.subpageLink %>" id="back">
+                    <i class="fas fa-arrow-left"></i>
+                    Wróć do strony usługi <%= service.title %>
+                </a>
+                <h1 class="login">Edytuj podkategorię dla usługi <%= service.title %></h1>
+                <% if(error.length > 0){ %>
+                    <div class="alert alert-danger" role="alert">
+                        <%= error %>
+                    </div>
+                <% } %>
+                <% if(success.length > 0){ %>
+                    <div class="alert alert-success" role="alert">
+                        <%= success %>
+                    </div>
+                <% } %>
+                
+                <form action="/services/<%= service._id %>/subcategories/<%= subcategory._id %>?_method=PUT" method="post">
+                   
+                    
+                    <div class="form-floating mb-3">
+                       
+                        <textarea required class="form-control" autocomplete="off" placeholder="demcio09" name="subcategory[name]" id="text"><%= subcategory.name %></textarea>
+                        <label for="username" class="username">
+                            Nazwa podkategorii
+                            
+                        </label>
+                        
+                    </div>
+                  
+                    <div class="form-floating mb-3">
+                       
+                        <input type="number" class="form-control" autocomplete="off" placeholder="demcio09" name="subcategory[price]" value="<%= subcategory.price %>" id="price">
+                        <label for="username" class="username">
+                            Cena
+                            
+                        </label>
+                        
+                    </div>
+                  
+
+                  
+                    <input type="submit" value="Edytuj podkategorię" class="btn button btn-danger btn-golden">
+                   
+                </form>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+<script>
+    document.getElementById("form").addEventListener("submit", () => {
+        document.getElementById("send").setAttribute("disabled", "disabled");
+        document.getElementById("send").value = "Edytowanie...";
+    })
+</script>
+</body>
+</html>

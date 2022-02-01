@@ -55,6 +55,7 @@
                                 <% } %> 
                                 <a class="dropdown-item" href="/services/<%= service._id %>/edit/picture">Edytuj zdjęcie główne</a>
                                 <a class="dropdown-item" href="/services/<%= service._id %>/whyHere/add">Dodaj powód dlaczego warto skorzystać</a>
+                                <a class="dropdown-item" href="/services/<%= service._id %>/subcategories/add">Dodaj podkategorię</a>
                             </div>
                         </div>
                     <% } %>
@@ -62,12 +63,26 @@
                         <h3 class="service-section-title">
                             Dlaczego warto skorzystać z tej usługi u nas?
                         </h3>
-                        <ul>
+                        <ul class="about">
                             <% for(let reason of service.whyHere){ %>
                                 <li><%= reason.text %></li>
                                 <% if(currentUser){ %>
                                     <a href="/services/<%= service._id %>/whyHere/<%= reason._id %>/edit">Edytuj</a>
                                     <a href="/services/<%= service._id %>/whyHere/<%= reason._id %>/delete">Usuń</a>
+                                <% } %>
+                            <% } %>
+                        </ul>
+                    <% } %>
+                    <% if(service.subcategories.length){ %>
+                        <h3 class="service-section-title">
+                            Podkategorie
+                        </h3>
+                        <ul class="about">
+                            <% for(let subcategory of service.subcategories){ %>
+                                <li><%= subcategory.name %> - <strong><%= subcategory.price %>zł</strong></li>
+                                <% if(currentUser){ %>
+                                    <a href="/services/<%= service._id %>/subcategories/<%= subcategory._id %>/edit">Edytuj</a>
+                                    <a href="/services/<%= service._id %>/subcategories/<%= subcategory._id %>/delete">Usuń</a>
                                 <% } %>
                             <% } %>
                         </ul>

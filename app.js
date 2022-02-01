@@ -6,6 +6,7 @@ const express               = require("express"),
       userRoutes            = require("./routes/user"),
       apiRoutes             = require("./routes/api"),
       indexRoutes           = require("./routes/index"),
+      subcategoryRoutes     = require("./routes/subcategory"),
       servicesRoutes        = require("./routes/service"),
       whyHeresRoutes        = require("./routes/whyHere"),
       LocalStrategy         = require("passport-local"),
@@ -37,7 +38,6 @@ app.use(require("express-session")({
     saveUninitialized: false,
     cookie: {
         httpOnly: true,
-        
     }
 }));
 app.use(function(req, res, next) {
@@ -61,6 +61,7 @@ app.use("/services", servicesRoutes);
 app.use("/users", userRoutes);
 app.use("/api", apiRoutes);
 app.use("/services/:service_id/whyHere", whyHeresRoutes);
+app.use("/services/:service_id/subcategories", subcategoryRoutes);
 app.use(indexRoutes);
 
 app.listen(process.env.PORT)
