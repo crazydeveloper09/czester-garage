@@ -5,7 +5,7 @@ const serviceSchema = new mongoose.Schema({
     profile: String,
     description: String,
     time: String,
-    price: Number,
+    price: String,
     pictures: [
         {
             type: mongoose.Schema.Types.ObjectId,

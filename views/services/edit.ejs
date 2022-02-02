@@ -34,7 +34,7 @@
                   
 
                     <div class="form-floating mb-3">
-                       <textarea required class="form-control" name="service[description]" id="description"><%= service.description %></textarea>
+                       <textarea class="form-control" name="service[description]" id="description"><%= service.description %></textarea>
                         <label for="description" class="username">
                             Opis usługi
                         
@@ -48,7 +48,7 @@
                         </label>
                      </div>
                      <div class="form-floating mb-3">
-                        <input type="number" class="form-control" autocomplete="off" placeholder="demcio09" name="service[price]" <%= service.price %> id="price">
+                        <input type="text" class="form-control" autocomplete="off" placeholder="demcio09" name="service[price]" <%= service.price %> id="price">
                         <label for="description" class="username">
                             Cena
                          

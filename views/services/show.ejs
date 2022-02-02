@@ -36,9 +36,12 @@
                         
                         
                     </div>
-                    <p class="about">
-                        <%= service.description %>
-                    </p>
+                    <% if(service.description){ %>
+                         <p class="about">
+                            <%= service.description %>
+                        </p>
+                    <% } %>
+                   
                     <% if(currentUser){ %>
                         <div class="dropdown">
                             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -79,7 +82,7 @@
                         </h3>
                         <ul class="about">
                             <% for(let subcategory of service.subcategories){ %>
-                                <li><%= subcategory.name %> - <strong><%= subcategory.price %>zł</strong></li>
+                                <li><%= subcategory.name %> - <strong><%= subcategory.price %></strong></li>
                                 <% if(currentUser){ %>
                                     <a href="/services/<%= service._id %>/subcategories/<%= subcategory._id %>/edit">Edytuj</a>
                                     <a href="/services/<%= service._id %>/subcategories/<%= subcategory._id %>/delete">Usuń</a>
