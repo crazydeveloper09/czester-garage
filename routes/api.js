@@ -2,7 +2,7 @@ const express = require("express"),
     User = require("../models/user"),
     router = express.Router();
 
-let admin_username = "admin";
+let admin_username = "czester-garage";
 
 router.get("/user", (req, res) => {
     User.findOne({username: admin_username}).populate("pictures").exec((err, admin) => {
