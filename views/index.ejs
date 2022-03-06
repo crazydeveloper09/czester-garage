@@ -15,8 +15,9 @@
         <div class="col-lg-12">
             
             <h2 class="section_desc">Poznaj nas bliżej</h2>
+            
             <p class="about text-justify">
-               <%= admin.description %>
+               <%- admin.description %>
             </p>
             <% if(currentUser){ %>
                 <a href="/users/<%= currentUser._id %>/edit" class="btn btn-danger btn-mine">Edytuj informacje</a>
